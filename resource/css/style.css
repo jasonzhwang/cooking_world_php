@@ -1,0 +1,253 @@
+/* global */
+a {
+    text-decoration: none;
+    color: #0f0f0f;
+}
+a:hover {
+    color: #FF5722;
+}
+a.username {
+    color: #2aabd2;
+}
+/* top nav bar */
+.top-navbar .glyphicon{
+    color: #FF5722;
+}
+/* homepage */
+
+#homeCarousel img {
+    width: 100%;
+    height: 30em;
+    object-fit: cover;
+}
+#homeCarousel .item h3{
+    margin: 0;
+}
+#homeCarousel .carousel-caption {
+    padding: 0.5em;
+    background: rgba(8, 8, 8, 0.19);
+    border-radius: 5px;
+    border: solid 2px #ffffff;
+}
+#homeCarousel .carousel-caption h3, #homeCarousel .carousel-caption p {
+    color: #FFFFFF;
+}
+@media(min-width: 992px) {
+    #homeCarousel .item h3{
+        margin: 15px;
+    }
+    #homeCarousel .carousel-caption {
+        padding: 2em;
+        background: rgba(8, 8, 8, 0.18);
+        border-radius: 10px;
+        border: solid 2px #ffffff;
+    }
+    .home-search-box input[type="text"] {
+        width: 18em !important
+    }
+}
+img.brand-sm {
+    width: 2%;
+}
+.recipe-cards h3.title-head {
+    color: #FF5722;
+    padding: 5px 10px 7px;
+    text-transform: Capitalize;
+    font-size: 22px;
+}
+.recipe-cards header {
+    border-bottom: 1px solid #FF5722;
+    margin-bottom: 1em;
+}
+.recipe-card {
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.recipe-card img {
+    width: 100%;
+}
+.recipe-card a {
+    color: #0f0f0f;
+}
+.recipe-card h4 {
+    font-family: "Merriweather",serif;
+    font-weight: bold;
+}
+.recipe-card a:hover {
+    color: #FF5722;
+    text-decoration: none;
+}
+.recipe-card div.introduction{
+    word-wrap: break-word;
+    width: 95%;
+    font-size: 16px;
+    font-family: "Open Sans",sans-serif;
+}
+.recipe-card a.username {
+    color: #2aabd2;
+}
+.recipe-card a.username:hover {
+    text-decoration: underline;
+}
+.home-for-beginner header {
+    border-bottom: 1px solid #FF5722;
+    margin-bottom: 1em;
+}
+.home-for-beginner h3.title-head {
+    color: #FF5722;
+    padding: 5px 10px 7px;
+    text-transform: Capitalize;
+    font-size: 22px;
+}
+.home-for-beginner .left .recipe-name {
+    color: #0f0f0f;
+}
+.home-for-beginner .left .recipe-name:hover {
+    color: #FF5722;
+    text-decoration: none;
+}
+.home-for-beginner .left .introduction {
+    word-break: break-all;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.home-for-beginner .right .col-xs-6 {
+    padding: 0 2px;
+}
+.ctb-section {
+    background: #F4F4F4;
+    padding: 15px 20px;
+    color: #2aabd2;
+}
+@media (min-width: 992px) {
+    .ctb-section {
+        background: #F4F4F4;
+        padding: 15px 40px;
+        color: #2aabd2;
+    }
+}
+#contributorCarousel {
+    margin-top: 20px;
+}
+#contributorCarousel .item img {
+    width: 100%;
+}
+#contributorCarousel .item a {
+    font-size: 16px;
+    color: #222222;
+}
+#contributorCarousel .carousel-control {
+    border-radius: 50%;
+    height: 3.5em;
+    width: 3.5em;
+    margin-top: 2.5em;
+}
+@media (min-width: 992px) {
+    #contributorCarousel .carousel-control {
+        margin-top: 2em;
+        background: none repeat scroll 0 0 #222222;
+        border: 4px solid #FFFFFF;
+    }
+}
+#contributorCarousel span {
+    display: block;
+    margin-top: 1em;
+}
+.logo-header {
+    margin-top: 3em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.home-search-box {
+    margin-top: 3em;
+}
+/* footer */
+/*--footer--*/
+footer {
+    padding: 0 0 0.5em;
+    background: #232323;
+}
+.amet-sed h4 {
+    font-size: 1.4em;
+    color:#2aabd2;
+    letter-spacing: 5px;
+    padding: 1em 0 0.6em;
+    text-transform: uppercase;
+}
+ul.nav-bottom li{
+    list-style:none;
+}
+ul.nav-bottom li  a{
+    text-decoration:none;
+    color:#838383;
+    font-size:0.9em;
+    padding: 0 ;
+    letter-spacing: 2px;
+}
+ul.nav-bottom li  a:hover{
+    color:#2aabd2;
+}
+.footer-top {
+    padding: 2em 0 2em;
+}
+.amet-sed {
+    padding: 0 1em 0 0;
+}
+ul.nav-bottom {
+    padding: 1em 0 0;
+}
+p.footer-class{
+    color:#838383;
+    font-size:1em;
+    text-transform:uppercase;
+}
+p.footer-class a{
+    color:#838383;
+    text-decoration:none;
+}
+p.footer-class a:hover{
+    color:#838383;
+}
+.amet-sed p{
+    color:#838383;
+    font-size:0.9em;
+    padding:2em 0 0 ;
+    letter-spacing: 2px;
+    text-transform:uppercase;
+}
+.amet-sed p a{
+    text-decoration:none;
+    color:#838383;
+}
+.amet-sed p a:hover{
+    text-decoration:underline;
+}
+ul.msg-social {
+    padding: 2em 0 0;
+}
+ul.social-in li{
+    display: inline-block;
+}
+ul.social-in li span{
+    color:#838383;
+    font-size:1.2em;
+    vertical-align: top;
+    margin:0 1em 0 0;
+}
+ul.social-in li i{
+    width: 2em;
+    height: 2em;
+    display: inline-block;
+    cursor: pointer;
+    background: none repeat scroll 0 0 #838383;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 2em;
+    font-size: 20px;
+}
+ul.social-in li i:hover{
+    background: none repeat scroll 0 0 #c2c2c2;
+    color: #2aabd2;
+}
+/*footer ends*/

@@ -1,9 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Charles
- * Date: 22/04/2017
- * Time: 10:12 PM
- */
-    echo phpinfo();
-    ?>
+    include "../services/error.php";
+    include "../services/Utils.php";
+    $utils = new Utils();
+    $pwd = "ajsndkjasfnsakj";
+    $hash = $utils->encrptPassword($pwd);
+    if (password_verify($pwd, $hash)) {
+        echo 'Password is valid!';
+    } else {
+        echo 'Invalid password.';
+    }
+//    echo phpinfo();
+?>
