@@ -16,6 +16,13 @@
         $email = $_GET["email"];
         $str = "select COUNT(*)  from user WHERE EmailAddress = ".getEscapeStr($conn,$email);
         outputResult($conn,$str);
+    }else if($type==4){
+        $vcode = $_GET["vcode"];
+        $mvcode = $_SESSION["captcha"];
+        if($vcode==$mvcode)
+            echo true;
+        else
+            echo false;
     }
 
     function getEscapeStr($connection,$field){

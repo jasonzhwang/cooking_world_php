@@ -3,7 +3,20 @@
     <?php include "default_head_resource.html"?>
 </head>
 <body>
+<?php
+    if(!isset($_GET['mobile'])){
+        include "user_nav_bar.php";
+    }
+?>
+
 <div class="container">
+    <div class="col-md-12 text-center text-capitalize signup-title" >
+<?php if(!isset($_GET['mobile'])) { ?>
+        <h3 > SIGN UP </h3 >
+<?php
+    }
+?>
+    </div >
     <form role="form" class="form-horizontal register-form">
         <!-- Account Information -->
         <div class="col-md-10 col-md-offset-1">
@@ -70,7 +83,7 @@
                     <div class="form-group">
                         <label for="email"  class="control-label col-md-2">E-mail：</label>
                         <div class="col-md-4">
-                            <input type="text" name="email" id="email" class="form-control">
+                            <input type="email" name="email" id="email" class="form-control">
                         </div>
                         <div class="col-md-5">
                             <p id="email-warning" style="margin-top: 12px;"></p>
@@ -79,7 +92,7 @@
                     <div class="form-group">
                         <label for="phone" class="control-label col-md-2">Mobile Phone：</label>
                         <div class="col-md-4">
-                            <input type="text" name="phone" id="phone" class="form-control">
+                            <input type="tel" name="phone" id="phone" class="form-control" pattern="^\d{4}-\d{3}-\d{4}$" required >
                         </div>
                         <div class="col-md-5">
                             <p id="phone-warning" style="margin-top: 12px;"></p>
@@ -92,7 +105,7 @@
             </label>
             <div class="form-group">
                 <div class="col-md-12">
-                    <input type="button" class="btn btn-default btn-block disabled" name="submit" value="Sign Up" id="submit">
+                    <input type="submit" class="btn btn-default btn-block disabled" name="submit" value="Sign Up" id="submit">
                 </div>
             </div>
         </div>
@@ -103,63 +116,75 @@
     $(function(){
         $('#reg-username').on('input propertychange', function(){
             var username = $(this).val();
-            $.ajax({
-                url: '../services/checkReg.php',
-                data: {
-                    username : username ,
-                    type : 1
-                },
-                success: function(result){
-                    if(result=='true'){
-                        $('#username-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
-                    }else{
-                        $('#username-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Sorry, this username has already been used.');
+            if (username.trim()==''){
+                $('#username-warning').empty();
+            }else{
+                $.ajax({
+                    url: '../services/checkReg.php',
+                    data: {
+                        username : username ,
+                        type : 1
+                    },
+                    success: function(result){
+                        if(result=='true'){
+                            $('#username-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
+                        }else{
+                            $('#username-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Sorry, this username has already been used.');
+                        }
+                    },
+                    error: function(){
+                        alert('connection error')
                     }
-                },
-                error: function(){
-                    alert('connection error')
-                }
-            });
+                });
+            }
         });
         $('#phone').on('input propertychange', function(){
             var phone = $(this).val();
-            $.ajax({
-                url: '../services/checkReg.php',
-                data: {
-                    phone : phone ,
-                    type : 2
-                },
-                success: function(result){
-                    if(result=='true'){
-                        $('#phone-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
-                    }else{
-                        $('#phone-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Sorry, this phone number has already been used.');
+            if (phone.trim()==''){
+                $('#phone-warning').empty();
+            }else{
+                $.ajax({
+                    url: '../services/checkReg.php',
+                    data: {
+                        phone : phone ,
+                        type : 2
+                    },
+                    success: function(result){
+                        if(result=='true'){
+                            $('#phone-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
+                        }else{
+                            $('#phone-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Sorry, this phone number has already been used.');
+                        }
+                    },
+                    error: function(){
+                        alert('connection error')
                     }
-                },
-                error: function(){
-                    alert('connection error')
-                }
-            });
+                });
+            }
         });
         $('#email').on('input propertychange', function(){
             var email = $(this).val();
-            $.ajax({
-                url: '../services/checkReg.php',
-                data: {
-                    email : email ,
-                    type : 3
-                },
-                success: function(result){
-                    if(result=='true'){
-                        $('#email-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
-                    }else{
-                        $('#email-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Sorry, this email address has already been used.');
+            if (email.trim()==''){
+                $('#email-warning').empty();
+            }else{
+                $.ajax({
+                    url: '../services/checkReg.php',
+                    data: {
+                        email : email ,
+                        type : 3
+                    },
+                    success: function(result){
+                        if(result=='true'){
+                            $('#email-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
+                        }else{
+                            $('#email-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Sorry, this email address has already been used.');
+                        }
+                    },
+                    error: function(){
+                        alert('connection error')
                     }
-                },
-                error: function(){
-                    alert('connection error')
-                }
-            });
+                });
+            }
         });
         $('#checkbox').change(function(){
             var n = $('input:checked' ).length;
@@ -178,13 +203,17 @@
 //        });
         $('#confirm-password').on('input propertychange', function(){
             var pwd = $('#reg-password').val();
-            if ($(this).val() == pwd) {
-                $('#pwd-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
+            if ($(this).val().trim()==''){
+                $('#confirm-password-warning').empty();
             }else{
-                $('#pwd-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Password does not match the confirm password.');
+                if ($(this).val() == pwd) {
+                    $('#pwd-warning').empty().append('<span class="glyphicon glyphicon-ok" style="color: #00f077"></span>');
+                }else{
+                    $('#pwd-warning').empty().append('<span class="glyphicon glyphicon-remove" style="color: #f30017"></span> Password does not match the confirm password.');
+                }
             }
         });
-        $('#submit').click(function(){
+        $('.register-form').submit(function(){
             if($('input:checked' ).length==1){
                 var submitReq = new Object();
                 submitReq.username = $('#reg-username').val();

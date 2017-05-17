@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default top-navbar navbar-fixed-top">
+<?php session_start() ?>
+<nav class="navbar navbar-default top-navbar user_nav">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -10,7 +11,10 @@
             <ul class="nav navbar-nav navbar-left">
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="register.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign Up</a></li>
+                <?php
+                    echo $_SESSION['username'];
+                ?>
+                <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign Up</a></li>
                 <li><a href="#" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Sign In</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>&nbsp;&nbsp;Sign Out</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-star"></span>&nbsp;&nbsp;Favorites</a></li>
@@ -60,3 +64,30 @@
 </div>
 <div class="clearfix"></div>
 <!-- login modal ends -->
+<script>
+    $('#sign-in').click(function () {
+        var isRem = 0;
+        if (document.getElementById("saveUser").checked)
+            isRem = 1;
+        $.ajax({
+            method: 'POST',
+            url: '../services/login.php' ,
+            data:{
+                username: $('#username').val() ,
+                password: $('#password').val() ,
+                isRem: isRem
+            } ,
+            success: function (result) {
+                if(result=='101'){
+                    window.location.href = 'homepage.php';
+                }else if(reulst=='102'){
+                    alert('The username or mobile phone is not registered');
+                }else if(reulst=='103'){
+                    alert('The password is wrong');
+                }else if(result='104'){
+                    alert('The password or username can not be empty');
+                }
+            }
+        });
+    });
+</script>

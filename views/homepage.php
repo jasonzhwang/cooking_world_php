@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php include "user_nav_bar.php"?>
-<?php include "logo_banner.html" ?>
+<?php include "logo_banner.php" ?>
 <!-- carousel starts -->
 <div id="homeCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
@@ -219,22 +219,7 @@
             for(i =0;i<elements.length;i++)
                 $($(elements[i]).children()[2]).addClass('col-xs-offset-2');
         }
-        $('#sign-in').click(function () {
-            var isRem = 0;
-            if (document.getElementById("saveUser").checked)
-                isRem = 1;
-            $.ajax({
-                url: 'login.php' ,
-                data:{
-                    username: $('#username').val() ,
-                    password: $('#password').val() ,
-                    isRem: isRem
-                } ,
-                success: function (result) {
-//                    need to complete
-                }
-            });
-        });
+
     });
 </script>
 </body>
